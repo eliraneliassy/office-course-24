@@ -1,0 +1,13 @@
+<div class="book">
+  @if (book) {
+    <div class="title">
+      {{ book.title }}
+    </div>
+    <img [src]="book.imageUrl">
+    <div class="price">
+      {{ book.price }}$
+    </div>
+
+    <button (click)="addToCartHandler()">Add To Cart</button>
+  }
+</div>
