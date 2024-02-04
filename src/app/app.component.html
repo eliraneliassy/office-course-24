@@ -1,9 +1,10 @@
-<h1>Hello {{title}}</h1>
+<h1>Hello {{ title }}</h1>
 
 <div class="container">
-  @for (book of books; track $index ) {
+  @for (book of books;track $index) {
     <app-book [book]="book"
-    (addToCart)="addToCart($event)"></app-book>
+              [itemInCart]="false"
+              (addToCart)="addToCart($event)"></app-book>
   }
 
 </div>
@@ -15,8 +16,10 @@
 </h2>
 
 <div class="container">
-  @for (cartItem of cart; track $index ) {
-      <app-book [book]="cartItem"></app-book>
+  @for (cartItem of cart;track $index) {
+    <app-book [book]="cartItem"
+              [itemInCart]="true"
+              (removeFromCart)="removeFromCart($event)"></app-book>
   }
 
 </div>

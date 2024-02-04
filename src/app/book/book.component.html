@@ -8,6 +8,11 @@
       {{ book.price }}$
     </div>
 
-    <button (click)="addToCartHandler()">Add To Cart</button>
+    @if (!itemInCart) {
+      <button (click)="addToCartHandler()">Add To Cart</button>
+    } @else {
+      <button (click)="removeFromCartHanlder()">Remove From Cart</button>
+    }
+
   }
 </div>

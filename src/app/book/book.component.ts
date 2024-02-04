@@ -11,10 +11,17 @@ import {NgIf} from "@angular/common";
 })
 export class BookComponent {
   @Input({required: true}) book?: Book;
+  @Input() itemInCart = false;
 
   @Output() addToCart: EventEmitter<Book> = new EventEmitter<Book>();
+  @Output() removeFromCart: EventEmitter<Book> = new EventEmitter<Book>();
+
 
   addToCartHandler(){
     this.addToCart.emit(this.book);
+  }
+
+  removeFromCartHanlder(){
+    this.removeFromCart.emit(this.book);
   }
 }

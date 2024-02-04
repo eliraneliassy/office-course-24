@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import {Component, inject} from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import {Book} from "./product.interface";
 import {NgFor} from "@angular/common";
 import {BookComponent} from "./book/book.component";
+import {CartService} from "./cart.service";
 
 @Component({
   selector: 'app-root',
@@ -13,6 +14,9 @@ import {BookComponent} from "./book/book.component";
 })
 export class AppComponent {
   title = 'Office Course 24';
+
+  protected cartService = inject(CartService);
+
 
   books: Book[] = [
     {
@@ -32,9 +36,18 @@ export class AppComponent {
     }
   ]
 
-  cart: Book[] = [];
+  cart: Book[] = this.cartService.cart;
 
   addToCart(book: Book) {
-    this.cart.push(book);
+    this.cartService.addToCart(book);
+    this.cart = this.cartService.cart;
   }
+
+  removeFromCart(book: Book) {
+    this.cartService.removeFromCart(book);
+    this.cart = this.cartService.cart;
+  }
+
+
+
 }
