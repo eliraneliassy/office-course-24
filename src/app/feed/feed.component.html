@@ -1,0 +1,8 @@
+<div class="container">
+  @for (book of books;track $index) {
+    <app-book [book]="book"
+              [itemInCart]="false"
+              (addToCart)="addToCart($event)"></app-book>
+  }
+
+</div>

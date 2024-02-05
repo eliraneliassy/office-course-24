@@ -1,26 +1,4 @@
 <h1>Hello {{ title }}</h1>
 
-<div class="container">
-  @for (book of books;track $index) {
-    <app-book [book]="book"
-              [itemInCart]="false"
-              (addToCart)="addToCart($event)"></app-book>
-  }
 
-</div>
-
-<hr>
-
-<h2>
-  My Shopping Cart:
-</h2>
-
-<div class="container">
-  @for (cartItem of cart;track $index) {
-    <app-book [book]="cartItem"
-              [itemInCart]="true"
-              (removeFromCart)="removeFromCart($event)"></app-book>
-  }
-
-</div>
-
+<router-outlet></router-outlet>
