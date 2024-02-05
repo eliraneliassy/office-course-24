@@ -1,0 +1,24 @@
+<form #form="ngForm" (ngSubmit)="login(form)">
+  <div>
+    <label>
+      Email:
+    </label>
+    <input ngModel name="email" required email #email=ngModel id="email">
+    @if (!email.valid && email.hasError('email') && email.touched) {
+      <small>Email must be a valid email format</small> <br>
+    }
+    @if (!email.valid && email.hasError('required') && email.touched) {
+      <small>Email is required</small>
+    }
+  </div>
+  <div>
+    <label>
+      Password:
+    </label>
+    <input ngModel name="password" required minlength="4"
+           pattern="^(?=.*[A-Z]).{8,}$" #password=ngModel id="password">
+  </div>
+
+  <button type="submit"
+  [disabled]="!form.valid">Login</button>
+</form>

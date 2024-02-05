@@ -2,23 +2,32 @@ import {Routes} from '@angular/router';
 import {CartComponent} from "./cart/cart.component";
 import {FeedComponent} from "./feed/feed.component";
 import {ProductPageComponent} from "./product-page/product-page.component";
+import {LoginComponent} from "./login/login.component";
 
 export const routes: Routes = [
   {
     path: 'cart',
-    component: CartComponent
+    loadComponent: () => import('./cart/cart.component').then(c => c.CartComponent)
   },
   {
     path: 'feed',
-    component: FeedComponent
+    loadComponent: () => import('./feed/feed.component').then(c => c.FeedComponent)
   },
   {
     path: '',
-    redirectTo: 'feed',
+    redirectTo: 'register',
     pathMatch: 'full'
   },
   {
     path: 'product/:id',
-    component: ProductPageComponent
+    loadComponent: () => import('./product-page/product-page.component').then(c => c.ProductPageComponent)
+  },
+  {
+    path: 'login',
+    loadComponent: () => import('./login/login.component').then(c => c.LoginComponent)
+  },
+  {
+    path: 'register',
+    loadComponent: () => import('./register/register.component').then(c => c.RegisterComponent)
   }
 ];

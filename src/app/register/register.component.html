@@ -1,0 +1,23 @@
+<form [formGroup]="form">
+  <div>
+    <label>Name: </label>
+    <input formControlName="name">
+
+    @if (!form.get('name')?.valid && form.get('name')?.touched && form.get('name')?.hasError('required')) {
+      <small>Name is required</small> <br>
+    }
+  </div>
+
+  <div>
+    <label>Email: </label>
+    <input formControlName="email">
+  </div>
+
+  <div>
+    <label>Password: </label>
+    <input formControlName="password">
+  </div>
+
+  <button type="submit" [disabled]="!form.valid"
+  (click)="register()">Register</button>
+</form>

@@ -6,6 +6,7 @@ import {BookComponent} from "./book/book.component";
 import {CartService} from "./cart.service";
 import {FeedService} from "./feed.service";
 import {HeaderComponent} from "./header/header.component";
+import {LoginComponent} from "./login/login.component";
 
 @Component({
   selector: 'app-root',
