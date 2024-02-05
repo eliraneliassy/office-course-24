@@ -19,9 +19,16 @@ export class FeedService {
         map((items: any[]) => items.map((item) => ({
           imageUrl: item.volumeInfo.imageLinks.thumbnail,
           title: item.volumeInfo.title,
-          price: item.volumeInfo.pageCount
+          price: item.volumeInfo.pageCount,
+          id: item.id
         })))
       )
+  }
+
+  getBookById(query: string, bookId: string): Observable<Book | undefined> {
+    return this.getBooks(query).pipe(
+      map((books: Book[]) => books.find(b => b.id === bookId))
+    )
   }
 
 

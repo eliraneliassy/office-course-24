@@ -16,6 +16,8 @@ export class BookComponent {
   @Output() addToCart: EventEmitter<Book> = new EventEmitter<Book>();
   @Output() removeFromCart: EventEmitter<Book> = new EventEmitter<Book>();
 
+  @Output() imageClicked = new EventEmitter<Book>();
+
 
   addToCartHandler(){
     this.addToCart.emit(this.book);
@@ -24,4 +26,10 @@ export class BookComponent {
   removeFromCartHanlder(){
     this.removeFromCart.emit(this.book);
   }
+
+  imgaeClickedHanlder() {
+    this.imageClicked.emit(this.book);
+  }
+
+
 }

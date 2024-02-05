@@ -2,7 +2,8 @@
   @for (book of books;track $index) {
     <app-book [book]="book"
               [itemInCart]="false"
-              (addToCart)="addToCart($event)"></app-book>
+              (addToCart)="addToCart($event)"
+              (imageClicked)="navigateToProductPage($event)"></app-book>
   }
 
 </div>
