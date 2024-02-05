@@ -10,5 +10,10 @@ export const routes: Routes = [
   {
     path: 'feed',
     component: FeedComponent
+  },
+  {
+    path: '',
+    redirectTo: 'feed',
+    pathMatch: 'full'
   }
 ];
