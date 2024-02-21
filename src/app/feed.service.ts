@@ -17,10 +17,11 @@ export class FeedService {
       .pipe(
         map((res: any) => res.items),
         map((items: any[]) => items.map((item) => ({
-          imageUrl: item.volumeInfo.imageLinks.thumbnail,
+          imageUrl: item.volumeInfo.imageLinks?.thumbnail,
           title: item.volumeInfo.title,
           price: item.volumeInfo.pageCount,
-          id: item.id
+          id: item.id,
+          publishedDate: item.volumeInfo.publishedDate
         })))
       )
   }

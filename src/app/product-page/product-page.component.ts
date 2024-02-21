@@ -23,7 +23,7 @@ export class ProductPageComponent {
   constructor() {
     // console.log(this.route.snapshot.params)
     this.route.params.subscribe((params: Params) => {
-      this.feedService.getBookById('angular', params['id'])
+      this.feedService.getBookById('Harry Potter', params['id'])
         .subscribe((book: Book | undefined) => this.book = book)
     });
   }

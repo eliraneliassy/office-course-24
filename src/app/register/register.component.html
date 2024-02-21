@@ -6,16 +6,36 @@
     @if (!form.get('name')?.valid && form.get('name')?.touched && form.get('name')?.hasError('required')) {
       <small>Name is required</small> <br>
     }
+    @if (!form.get('name')?.valid && form.get('name')?.touched && form.get('name')?.hasError('minlength')) {
+      <small>Name should be a valid name with at least 2 charters</small> <br>
+    }
+    @if (!form.get('name')?.valid && form.get('name')?.touched && form.get('name')?.hasError('forbidenName')) {
+      <small>Name can't be Eliran</small> <br>
+    }
+
   </div>
 
   <div>
     <label>Email: </label>
     <input formControlName="email">
+
+    @if (!form.get('email')?.valid && form.get('email')?.touched && form.get('email')?.hasError('required')) {
+      <small>Email is required</small> <br>
+    }
+    @if (!form.get('email')?.valid && form.get('email')?.touched && form.get('email')?.hasError('email')) {
+      <small>Email must be a valid email</small> <br>
+    }
   </div>
 
   <div>
     <label>Password: </label>
     <input formControlName="password">
+    @if (!form.get('password')?.valid && form.get('password')?.touched && form.get('password')?.hasError('required')) {
+      <small>Password is required</small> <br>
+    }
+    @if (!form.get('password')?.valid && form.get('password')?.touched && form.get('password')?.hasError('pattern')) {
+      <small>Password is not in the right format</small> <br>
+    }
   </div>
 
   <button type="submit" [disabled]="!form.valid"

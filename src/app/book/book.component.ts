@@ -1,15 +1,58 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {
+  AfterContentChecked,
+  AfterContentInit,
+  AfterViewChecked,
+  AfterViewInit,
+  Component, DoCheck,
+  EventEmitter,
+  Input, OnChanges, OnDestroy,
+  OnInit,
+  Output,
+  SimpleChanges
+} from '@angular/core';
 import {Book} from "../product.interface";
-import {NgIf} from "@angular/common";
+import {CurrencyPipe, DatePipe, NgIf} from "@angular/common";
+import {DiscountPipe} from "../discount.pipe";
 
 @Component({
   selector: 'app-book',
   standalone: true,
-  imports: [NgIf],
+  imports: [NgIf, CurrencyPipe, DatePipe, DiscountPipe],
   templateUrl: './book.component.html',
   styleUrl: './book.component.scss'
 })
-export class BookComponent {
+export class BookComponent implements OnInit, AfterViewInit, AfterContentInit, AfterViewChecked, AfterContentChecked, DoCheck, OnDestroy, OnChanges {
+  ngOnChanges(changes: SimpleChanges): void {
+      console.log('NG ON CAHNGES', changes);
+  }
+  ngAfterContentChecked(): void {
+      console.log('After content checked');
+  }
+
+  ngOnDestroy(): void {
+    console.log('on destory');
+  }
+  ngAfterViewChecked(): void {
+    console.log('After View checked');
+  }
+  ngAfterContentInit(): void {
+    console.log('After content init');
+  }
+
+  ngDoCheck(): void {
+    console.log('Do Check');
+  }
+  ngAfterViewInit(): void {
+    console.log('After View Init');
+  }
+  ngOnInit(): void {
+    console.log('On Init');
+  }
+
+  constructor() {
+    console.log('CTOR!');
+  }
+
   @Input({required: true}) book?: Book;
   @Input() itemInCart = false;
 

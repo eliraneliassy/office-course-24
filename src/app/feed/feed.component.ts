@@ -1,4 +1,4 @@
-import {Component, inject} from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import {BookComponent} from "../book/book.component";
 import {CartService} from "../cart.service";
 import {FeedService} from "../feed.service";
@@ -14,16 +14,17 @@ import {Router} from "@angular/router";
   templateUrl: './feed.component.html',
   styleUrl: './feed.component.scss'
 })
-export class FeedComponent {
+export class FeedComponent implements OnInit{
 
   protected cartService = inject<CartService>(CartService);
   protected feedService: FeedService = inject<FeedService>(FeedService);
   protected router = inject(Router);
 
-  constructor() {
-    this.feedService.getBooks('angular')
+
+  ngOnInit(): void {
+    this.feedService.getBooks('Harry Potter')
       .subscribe((res: Book[]) => this.books = res);
-  }
+    }
 
 
   books: Book[] = [];

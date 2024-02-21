@@ -5,8 +5,11 @@
     </div>
 
     <img [src]="book.imageUrl" (click)="imgaeClickedHanlder()">
+    <div class="publish-date">
+      {{book.publishedDate | date}}
+    </div>
     <div class="price">
-      {{ book.price }}$
+      {{ book.price | discount | currency: 'USD'  }}
     </div>
 
     @if (!itemInCart) {
