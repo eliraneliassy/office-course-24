@@ -1,4 +1,4 @@
-import {Component, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {FormsModule, NgForm} from "@angular/forms";
 import {Router} from "@angular/router";
 import {UserService} from "../user.service";
@@ -11,7 +11,8 @@ import {User} from "../user.interface";
     FormsModule
   ],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.scss'
+  styleUrl: './login.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LoginComponent {
 

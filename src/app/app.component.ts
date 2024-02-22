@@ -1,12 +1,6 @@
-import {Component, inject} from '@angular/core';
-import {RouterLink, RouterOutlet} from '@angular/router';
-import {Book} from "./product.interface";
-import {NgFor} from "@angular/common";
-import {BookComponent} from "./book/book.component";
-import {CartService} from "./cart.service";
-import {FeedService} from "./feed.service";
+import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {RouterOutlet} from '@angular/router';
 import {HeaderComponent} from "./header/header.component";
-import {LoginComponent} from "./login/login.component";
 
 @Component({
   selector: 'app-root',
@@ -14,6 +8,7 @@ import {LoginComponent} from "./login/login.component";
   imports: [RouterOutlet, HeaderComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent {
 

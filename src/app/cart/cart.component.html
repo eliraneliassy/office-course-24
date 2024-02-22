@@ -4,7 +4,7 @@
 </h2>
 
 <div class="container">
-  @for (cartItem of cart;track $index) {
+  @for (cartItem of cart$ | async ;track $index) {
     <app-book [book]="cartItem"
               [itemInCart]="true"
               (removeFromCart)="removeFromCart($event)"></app-book>

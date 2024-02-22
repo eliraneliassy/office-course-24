@@ -2,7 +2,7 @@ import {
   AfterContentChecked,
   AfterContentInit,
   AfterViewChecked,
-  AfterViewInit,
+  AfterViewInit, ChangeDetectionStrategy,
   Component, DoCheck,
   EventEmitter,
   Input, OnChanges, OnDestroy,
@@ -19,7 +19,8 @@ import {DiscountPipe} from "../discount.pipe";
   standalone: true,
   imports: [NgIf, CurrencyPipe, DatePipe, DiscountPipe],
   templateUrl: './book.component.html',
-  styleUrl: './book.component.scss'
+  styleUrl: './book.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BookComponent implements OnInit, AfterViewInit, AfterContentInit, AfterViewChecked, AfterContentChecked, DoCheck, OnDestroy, OnChanges {
   ngOnChanges(changes: SimpleChanges): void {

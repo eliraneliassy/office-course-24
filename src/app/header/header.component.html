@@ -1,6 +1,7 @@
 <h1 appChangeColor color="green">Hello {{ title }}</h1>
 
-@if(user) {
+
+@if(user$ | async; as user) {
 <div class="links">
   <ul>
     <li>
@@ -26,5 +27,5 @@
 
 
 <div>
-  Number of Items in cart: {{numberOfItems}}
+  Number of Items in cart: {{numberOfItems$ | async}}
 </div>
