@@ -22,7 +22,6 @@ export class RegisterComponent {
   });
 
   register(){
-
     console.log(this.form);
   }
 

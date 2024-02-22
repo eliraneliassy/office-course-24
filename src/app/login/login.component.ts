@@ -1,6 +1,8 @@
 import {Component, inject} from '@angular/core';
 import {FormsModule, NgForm} from "@angular/forms";
 import {Router} from "@angular/router";
+import {UserService} from "../user.service";
+import {User} from "../user.interface";
 
 @Component({
   selector: 'app-login',
@@ -14,10 +16,14 @@ import {Router} from "@angular/router";
 export class LoginComponent {
 
   router = inject(Router);
+  userService = inject(UserService);
 
   login(form: NgForm) {
     console.log(form);
-    this.router.navigateByUrl('feed');
+    const user: User = {
+      email: form.value.email
+    }
+    this.userService.login(user);
 
   }
 

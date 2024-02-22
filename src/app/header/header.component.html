@@ -1,5 +1,6 @@
 <h1 appChangeColor color="green">Hello {{ title }}</h1>
 
+@if(user) {
 <div class="links">
   <ul>
     <li>
@@ -13,4 +14,17 @@
       </a>
     </li>
   </ul>
+</div>
+
+
+  <div class="greeting">
+    Hello {{user.email}}
+  </div>
+
+  <button (click)="logout()">LOGOUT</button>
+}
+
+
+<div>
+  Number of Items in cart: {{numberOfItems}}
 </div>
