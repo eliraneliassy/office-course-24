@@ -3,14 +3,17 @@ import {inject} from "@angular/core";
 import {UserService} from "./user.service";
 import {User} from "./user.interface";
 import {map, Observable, of} from "rxjs";
+import {UserQuery} from "./store/user/user.query";
 
 export const authGuard: CanActivateFn = (route, state) => {
-  const userService = inject(UserService);
+  // const userService = inject(UserService);
   const router = inject(Router);
 
-  return userService.getUser()
+  const userQuery = inject(UserQuery);
+
+  return userQuery.selectEmail$
     .pipe(
-      map((user: User | null) => {
+      map((user: string | null) => {
         if(user) {
           return true;
         }

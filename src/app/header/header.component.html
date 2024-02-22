@@ -1,7 +1,7 @@
 <h1 appChangeColor color="green">Hello {{ title }}</h1>
 
 
-@if(user$ | async; as user) {
+@if(userEmail$ | async; as email) {
 <div class="links">
   <ul>
     <li>
@@ -19,7 +19,7 @@
 
 
   <div class="greeting">
-    Hello {{user.email}}
+    Hello {{email}}
   </div>
 
   <button (click)="logout()">LOGOUT</button>

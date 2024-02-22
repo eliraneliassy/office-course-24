@@ -7,6 +7,7 @@ import {User} from "../user.interface";
 import {map, Observable} from "rxjs";
 import {AsyncPipe, NgIf} from "@angular/common";
 import {Book} from "../product.interface";
+import {UserQuery} from "../store/user/user.query";
 
 @Component({
   selector: 'app-header',
@@ -33,14 +34,16 @@ export class HeaderComponent implements OnInit {
 
   userService = inject(UserService);
 
-  user$?: Observable<User | null>;
+  // user$?: Observable<User | null>;
+  userQuery = inject(UserQuery);
+  userEmail$ = this.userQuery.selectEmail$;
 
   ngOnInit(): void {
     this.numberOfItems$ = this.cartService.getCart()
       .pipe(
         map((cart: Book[]) => cart.length)
       );
-    this.user$ = this.userService.getUser();
+    // this.user$ = this.userService.getUser();
   }
 
   logout(){
