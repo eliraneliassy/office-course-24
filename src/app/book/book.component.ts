@@ -13,11 +13,14 @@ import {
 import {Book} from "../product.interface";
 import {CurrencyPipe, DatePipe, NgIf} from "@angular/common";
 import {DiscountPipe} from "../discount.pipe";
+import {MatCardModule} from '@angular/material/card';
+import {MatButtonModule} from "@angular/material/button";
+
 
 @Component({
   selector: 'app-book',
   standalone: true,
-  imports: [NgIf, CurrencyPipe, DatePipe, DiscountPipe],
+  imports: [NgIf, CurrencyPipe, DatePipe, DiscountPipe, MatCardModule, MatButtonModule],
   templateUrl: './book.component.html',
   styleUrl: './book.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush

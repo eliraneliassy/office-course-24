@@ -1,3 +1,28 @@
 .active{
   background-color: orange;
 }
+
+.mat-toolbar{
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.links{
+  display: flex;
+  align-items: center;
+
+  ul {
+    list-style-type: none;
+    display: flex;
+    li{
+      margin-right: 15px;
+    }
+  }
+
+}
+
+.greeting{
+  display: flex;
+  justify-content: center;
+}

@@ -25,7 +25,7 @@ export class UserService {
   }
 
   logout(){
-
+    this.userStore.update((state: UserState) => ({...state, email: null}))
     this.router.navigateByUrl('/login');
   }
 }

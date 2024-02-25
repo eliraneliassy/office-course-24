@@ -1,31 +1,43 @@
-<h1 appChangeColor color="green">Hello {{ title }}</h1>
+<mat-toolbar color="primary">
+  <h1>Hello {{ title }}</h1>
 
 
-@if(userEmail$ | async; as email) {
-<div class="links">
-  <ul>
-    <li>
-      <a routerLink="/feed" routerLinkActive="active">
-        Feed
-      </a>
-    </li>
-    <li>
-      <a routerLink="/cart" routerLinkActive="active">
-        Cart
-      </a>
-    </li>
-  </ul>
-</div>
+    @if (userEmail$ | async;as email) {
+      <div class="links">
+      <ul>
+        <li>
+          <a routerLink="/feed" routerLinkActive="active">
+            Feed
+          </a>
+        </li>
+        <li>
+          <a routerLink="/cart" routerLinkActive="active">
+            Cart
+          </a>
+        </li>
+      </ul>
+      </div>
 
 
-  <div class="greeting">
-    Hello {{email}}
-  </div>
-
-  <button (click)="logout()">LOGOUT</button>
-}
 
 
-<div>
-  Number of Items in cart: {{numberOfItems$ | async}}
-</div>
+      <div>
+        Number of Items in cart: {{ numberOfItems$ | async }}
+      </div>
+
+      <div class="greeting">
+        <div class="greeting">
+          Hello {{ email }}
+        </div>
+
+        <button (click)="logout()" mat-button>LOGOUT</button>
+      </div>
+    }
+
+
+
+
+</mat-toolbar>
+
+
+

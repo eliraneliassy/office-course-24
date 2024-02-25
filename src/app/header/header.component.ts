@@ -9,6 +9,9 @@ import {AsyncPipe, NgIf} from "@angular/common";
 import {Book} from "../product.interface";
 import {UserQuery} from "../store/user/user.query";
 import {CartQuery} from "../store/cart/cart.query";
+import {MatToolbarModule} from "@angular/material/toolbar";
+import {MatIconModule} from "@angular/material/icon";
+import {MatButton} from "@angular/material/button";
 
 @Component({
   selector: 'app-header',
@@ -18,7 +21,10 @@ import {CartQuery} from "../store/cart/cart.query";
     RouterLinkActive,
     ChangeColorDirective,
     AsyncPipe,
-    NgIf
+    NgIf,
+    MatToolbarModule,
+    MatIconModule,
+    MatButton
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
