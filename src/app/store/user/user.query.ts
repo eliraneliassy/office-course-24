@@ -7,6 +7,8 @@ import {UserState, UserStore} from "./user.store";
 export class UserQuery extends Query<UserState> {
 
   selectEmail$ = this.select('email')
+
+  selectUserState$ = this.select();
   constructor(protected override store: UserStore) {
     super(store);
   }

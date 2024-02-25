@@ -8,6 +8,7 @@ import {map, Observable} from "rxjs";
 import {AsyncPipe, NgIf} from "@angular/common";
 import {Book} from "../product.interface";
 import {UserQuery} from "../store/user/user.query";
+import {CartQuery} from "../store/cart/cart.query";
 
 @Component({
   selector: 'app-header',
@@ -28,21 +29,17 @@ export class HeaderComponent implements OnInit {
 
   title = 'Office Course 24';
 
-  cartService = inject(CartService);
 
-  numberOfItems$?: Observable<number>;
 
   userService = inject(UserService);
 
   // user$?: Observable<User | null>;
   userQuery = inject(UserQuery);
   userEmail$ = this.userQuery.selectEmail$;
+  cartQuery = inject(CartQuery);
+  numberOfItems$?: Observable<number> = this.cartQuery.selectNumOfItemsInCart$;
 
   ngOnInit(): void {
-    this.numberOfItems$ = this.cartService.getCart()
-      .pipe(
-        map((cart: Book[]) => cart.length)
-      );
     // this.user$ = this.userService.getUser();
   }
 

@@ -5,6 +5,7 @@ import {CartService} from "../cart.service";
 import {RouterOutlet} from "@angular/router";
 import {Observable, Subscription} from "rxjs";
 import {AsyncPipe} from "@angular/common";
+import {CartQuery} from "../store/cart/cart.query";
 
 @Component({
   selector: 'app-cart',
@@ -20,12 +21,12 @@ import {AsyncPipe} from "@angular/common";
 })
 export class CartComponent implements OnInit{
 
-  cartService= inject(CartService);
-
   cart$?: Observable<Book[]>
+  cartQuery = inject(CartQuery);
+  cartService = inject(CartService);
 
   ngOnInit(): void {
-    this.cart$ = this.cartService.getCart();
+    this.cart$ = this.cartQuery.selectCart$;
   }
   removeFromCart(book: Book) {
     this.cartService.removeFromCart(book);
