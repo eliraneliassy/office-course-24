@@ -7,6 +7,10 @@ import {Router} from "@angular/router";
 import {InfiniteScrollDirective} from "../infinite-scroll.directive";
 import {Observable, Subscription} from "rxjs";
 import {AsyncPipe} from "@angular/common";
+import {MatDialogModule} from '@angular/material/dialog';
+import {Dialog} from "@angular/cdk/dialog";
+import {ProductPageComponent} from "../product-page/product-page.component";
+
 
 @Component({
   selector: 'app-feed',
@@ -14,7 +18,8 @@ import {AsyncPipe} from "@angular/common";
   imports: [
     BookComponent,
     InfiniteScrollDirective,
-    AsyncPipe
+    AsyncPipe,
+    MatDialogModule
   ],
   templateUrl: './feed.component.html',
   styleUrl: './feed.component.scss',
@@ -27,6 +32,7 @@ export class FeedComponent implements OnInit {
   protected feedService: FeedService = inject<FeedService>(FeedService);
   protected router = inject(Router);
   protected cdr = inject(ChangeDetectorRef);
+  protected dialog = inject(Dialog);
 
   books$?: Observable<Book[]>;
 
@@ -41,7 +47,12 @@ export class FeedComponent implements OnInit {
   }
 
   navigateToProductPage(book: Book) {
-    this.router.navigateByUrl(`/product/${book.id}`)
+    // this.router.navigateByUrl(`/product/${book.id}`)
+    this.dialog.open(ProductPageComponent, {
+      data: {
+        book
+      }
+    })
   }
 
 
